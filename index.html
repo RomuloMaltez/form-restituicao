@@ -1,0 +1,1162 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Requerimento de Restituição de Tributos e Rendas Municipais</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f5f5f5;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid #e0e0e0;
+        }
+
+        .header h1 {
+            color: #2c3e50;
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+
+        .header p {
+            color: #666;
+            font-size: 14px;
+        }
+
+        .section {
+            margin-bottom: 30px;
+            padding: 20px;
+            border: 1px solid #e0e0e0;
+            border-radius: 6px;
+            background-color: #fafafa;
+        }
+
+        .section-title {
+            font-size: 18px;
+            font-weight: bold;
+            color: #2c3e50;
+            margin-bottom: 15px;
+            padding-bottom: 8px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-row {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .form-col {
+            flex: 1;
+            min-width: 200px;
+        }
+
+        .form-col-half {
+            flex: 0 0 48%;
+            min-width: 200px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+            color: #555;
+        }
+
+        .required {
+            color: #e74c3c;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="tel"],
+        input[type="date"],
+        input[type="number"],
+        select,
+        textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 14px;
+            transition: border-color 0.3s;
+        }
+
+        input:focus,
+        select:focus,
+        textarea:focus {
+            outline: none;
+            border-color: #3498db;
+            box-shadow: 0 0 5px rgba(52, 152, 219, 0.3);
+        }
+
+        textarea {
+            resize: vertical;
+            min-height: 80px;
+        }
+
+        .radio-group {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin-top: 5px;
+        }
+
+        .radio-item {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .checkbox-group {
+            margin-top: 10px;
+        }
+
+        .checkbox-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 8px;
+            margin-bottom: 10px;
+            padding: 10px;
+            background: white;
+            border: 1px solid #e0e0e0;
+            border-radius: 4px;
+        }
+
+        .checkbox-item input[type="checkbox"] {
+            width: auto;
+            margin-top: 2px;
+        }
+
+        .checkbox-item label {
+            margin-bottom: 0;
+            font-weight: normal;
+            cursor: pointer;
+        }
+
+        .button-group {
+            text-align: center;
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid #e0e0e0;
+        }
+
+        .btn {
+            padding: 12px 30px;
+            margin: 0 10px;
+            border: none;
+            border-radius: 4px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .btn-primary {
+            background-color: #3498db;
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background-color: #2980b9;
+        }
+
+        .btn-secondary {
+            background-color: #95a5a6;
+            color: white;
+        }
+
+        .btn-secondary:hover {
+            background-color: #7f8c8d;
+        }
+
+        .error {
+            color: #e74c3c;
+        }
+
+        .campo-erro {
+            border: 2px solid #e74c3c !important;
+            background-color: #fdf2f2 !important;
+            animation: shake 0.5s ease-in-out;
+        }
+
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-5px); }
+            75% { transform: translateX(5px); }
+        }
+
+        .info-text {
+            font-size: 12px;
+            margin-top: 5px;
+        }
+
+        .hidden {
+            display: none !important;
+        }
+
+        .conditional-field {
+            margin-top: 15px;
+            padding: 15px;
+            background-color: #f8f9fa;
+            border: 1px solid #dee2e6;
+            border-radius: 4px;
+        }
+
+        .preview {
+            background: white;
+            padding: 30px;
+            border: 1px solid #ddd;
+            margin-top: 20px;
+        }
+
+        .preview h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #2c3e50;
+        }
+
+        .preview-section {
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .preview-section h3 {
+            color: #34495e;
+            margin-bottom: 10px;
+        }
+
+        .preview-item {
+            margin-bottom: 8px;
+        }
+
+        .preview-item strong {
+            color: #2c3e50;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+                margin: 10px;
+            }
+
+            .form-row {
+                flex-direction: column;
+            }
+
+            .form-col-half {
+                flex: 1;
+            }
+
+            .radio-group {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .btn {
+                display: block;
+                width: 100%;
+                margin: 5px 0;
+            }
+        }
+
+        @media print {
+            body {
+                background: white;
+                padding: 0;
+            }
+
+            .container {
+                box-shadow: none;
+                border: none;
+            }
+
+            .button-group {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>📄 Requerimento de Restituição de Tributos e Rendas Municipais</h1>
+            <p>Preencha todos os campos obrigatórios para solicitar a restituição</p>
+        </div>
+
+        <form id="formularioRestituicao">
+            <!-- Seção 1: Identificação do Contribuinte -->
+            <div class="section">
+                <h2 class="section-title">👤 1. Identificação do Contribuinte</h2>
+                
+                <div class="form-group">
+                    <label>Tipo de Pessoa <span class="required">*</span></label>
+                    <div class="radio-group">
+                        <div class="radio-item">
+                            <input type="radio" id="fisica" name="tipoContribuinte" value="fisica" required>
+                            <label for="fisica">Pessoa Física</label>
+                        </div>
+                        <div class="radio-item">
+                            <input type="radio" id="juridica" name="tipoContribuinte" value="juridica" required>
+                            <label for="juridica">Pessoa Jurídica</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-col">
+                        <label for="nomeRazaoSocial">Nome/Razão Social <span class="required">*</span></label>
+                        <input type="text" id="nomeRazaoSocial" name="nomeRazaoSocial" placeholder="Digite o nome completo ou razão social" required>
+                    </div>
+                    <div class="form-col">
+                        <label for="cpfCnpj"><span id="labelCpfCnpj">CPF</span> <span class="required">*</span></label>
+                        <input type="text" id="cpfCnpj" name="cpfCnpj" placeholder="000.000.000-00" required>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-col">
+                        <label for="cep">CEP <span class="required">*</span></label>
+                        <input type="text" id="cep" name="cep" placeholder="00000-000" required>
+                    </div>
+                    <div class="form-col">
+                        <label for="logradouro">Logradouro <span class="required">*</span></label>
+                        <input type="text" id="logradouro" name="logradouro" placeholder="Rua, Avenida, Praça..." required>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-col-half">
+                        <label for="numero">Número <span class="required">*</span></label>
+                        <input type="text" id="numero" name="numero" placeholder="123" required>
+                    </div>
+                    <div class="form-col">
+                        <label for="complemento">Complemento</label>
+                        <input type="text" id="complemento" name="complemento" placeholder="Apto, Sala, Bloco... (opcional)">
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-col">
+                        <label for="bairro">Bairro <span class="required">*</span></label>
+                        <input type="text" id="bairro" name="bairro" placeholder="Nome do bairro" required>
+                    </div>
+                    <div class="form-col">
+                        <label for="cidade">Cidade <span class="required">*</span></label>
+                        <input type="text" id="cidade" name="cidade" placeholder="Nome da cidade" required>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-col-half">
+                        <label for="estado">Estado <span class="required">*</span></label>
+                        <input type="text" id="estado" name="estado" value="SP" placeholder="RO" required>
+                    </div>
+                    <div class="form-col">
+                        <label for="email">E-mail <span class="required">*</span></label>
+                        <input type="email" id="email" name="email" placeholder="seuemail@exemplo.com" required>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="telefone">Telefone/WhatsApp <span class="required">*</span></label>
+                    <input type="tel" id="telefone" name="telefone" placeholder="(11) 99999-9999" required>
+                </div>
+            </div>
+
+            <!-- Seção 2: Qualificação do Requerente -->
+            <div class="section">
+                <h2 class="section-title">📋 2. Qualificação do Requerente</h2>
+                
+                <div class="form-group">
+                    <label>O requerente é <span class="required">*</span></label>
+                    <div class="radio-group">
+                        <div class="radio-item">
+                            <input type="radio" id="proprio" name="qualificacaoRequerente" value="proprio" required>
+                            <label for="proprio">O próprio contribuinte</label>
+                        </div>
+                        <div class="radio-item">
+                            <input type="radio" id="procurador" name="qualificacaoRequerente" value="procurador" required>
+                            <label for="procurador">Procurador legalmente habilitado</label>
+                        </div>
+                        <div class="radio-item">
+                            <input type="radio" id="sucessorio" name="qualificacaoRequerente" value="sucessorio" required>
+                            <label for="sucessorio">Detentor de direito sucessório</label>
+                        </div>
+                        <div class="radio-item">
+                            <input type="radio" id="substituto" name="qualificacaoRequerente" value="substituto" required>
+                            <label for="substituto">Substituto tributário</label>
+                        </div>
+                        <div class="radio-item">
+                            <input type="radio" id="orgao" name="qualificacaoRequerente" value="orgao" required>
+                            <label for="orgao">Órgão público</label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Campos condicionais para requerente diferente do próprio contribuinte -->
+                <div id="dadosRequerente" class="conditional-field hidden">
+                    <h4 style="margin-bottom: 15px; color: #2c3e50;">Dados do Requerente</h4>
+                    <div class="form-row">
+                        <div class="form-col">
+                            <label for="nomeRequerente">Nome Completo <span class="required">*</span></label>
+                            <input type="text" id="nomeRequerente" name="nomeRequerente" placeholder="Nome completo do requerente">
+                        </div>
+                        <div class="form-col">
+                            <label for="cpfRequerente">CPF <span class="required">*</span></label>
+                            <input type="text" id="cpfRequerente" name="cpfRequerente" placeholder="000.000.000-00">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-col">
+                            <label for="emailRequerente">E-mail <span class="required">*</span></label>
+                            <input type="email" id="emailRequerente" name="emailRequerente" placeholder="email@exemplo.com">
+                        </div>
+                        <div class="form-col">
+                            <label for="telefoneRequerente">Telefone/WhatsApp <span class="required">*</span></label>
+                            <input type="tel" id="telefoneRequerente" name="telefoneRequerente" placeholder="(11) 99999-9999">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Seção 3: Detalhes do Crédito -->
+            <div class="section">
+                <h2 class="section-title">💰 3. Detalhes do Crédito a ser Restituído</h2>
+                
+                <div class="form-group">
+                    <label>Tributo Objeto da Restituição <span class="required">*</span></label>
+                    <div class="radio-group">
+                        <div class="radio-item">
+                            <input type="radio" id="iptu" name="tipoTributo" value="iptu" required>
+                            <label for="iptu">IPTU - Imposto Predial e Territorial Urbano</label>
+                        </div>
+                        <div class="radio-item">
+                            <input type="radio" id="itbi" name="tipoTributo" value="itbi" required>
+                            <label for="itbi">ITBI - Imposto sobre Transmissão de Bens Imóveis</label>
+                        </div>
+                        <div class="radio-item">
+                            <input type="radio" id="iss" name="tipoTributo" value="iss" required>
+                            <label for="iss">ISS - Imposto Sobre Serviços</label>
+                        </div>
+                        <div class="radio-item">
+                            <input type="radio" id="trsd" name="tipoTributo" value="trsd" required>
+                            <label for="trsd">TRSD - Taxa de Coleta de Resíduo (Lixo)</label>
+                        </div>
+                        <div class="radio-item">
+                            <input type="radio" id="taxas" name="tipoTributo" value="taxas" required>
+                            <label for="taxas">Taxas Municipais</label>
+                        </div>
+                        <div class="radio-item">
+                            <input type="radio" id="outras_rendas" name="tipoTributo" value="outras_rendas" required>
+                            <label for="outras_rendas">Outras Rendas</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-col">
+                        <label for="numeroDAM">Número do DAM/Guia <span class="required">*</span></label>
+                        <input type="text" id="numeroDAM" name="numeroDAM" placeholder="Ex: 123456789" required>
+                    </div>
+                    <div class="form-col">
+                        <label for="dataPagamento">Data do Pagamento <span class="required">*</span></label>
+                        <input type="date" id="dataPagamento" name="dataPagamento" required>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="valorPago">Valor Pago (R$) <span class="required">*</span></label>
+                    <input type="number" id="valorPago" name="valorPago" step="0.01" min="0" placeholder="Ex: 1500.00" required>
+                </div>
+            </div>
+
+            <!-- Seção 4: Motivação da Restituição -->
+            <div class="section">
+                <h2 class="section-title">📝 4. Motivação da Restituição</h2>
+                
+                <div class="form-group">
+                    <label>Selecione o motivo principal <span class="required">*</span></label>
+                    <div class="radio-group">
+                        <div class="radio-item">
+                            <input type="radio" id="duplicidade" name="motivacao" value="duplicidade" required>
+                            <label for="duplicidade">Pagamento em duplicidade</label>
+                        </div>
+                        <div class="radio-item">
+                            <input type="radio" id="erro_identificacao" name="motivacao" value="erro_identificacao" required>
+                            <label for="erro_identificacao">Erro na identificação do sujeito passivo</label>
+                        </div>
+                        <div class="radio-item">
+                            <input type="radio" id="erro_calculo" name="motivacao" value="erro_calculo" required>
+                            <label for="erro_calculo">Erro na alíquota, base de cálculo ou apuração do valor</label>
+                        </div>
+                        <div class="radio-item">
+                            <input type="radio" id="imovel_incorreto" name="motivacao" value="imovel_incorreto" required>
+                            <label for="imovel_incorreto">Pagamento referente a imóvel incorreto (IPTU/TRSD)</label>
+                        </div>
+                        <div class="radio-item">
+                            <input type="radio" id="decisao_administrativa" name="motivacao" value="decisao_administrativa" required>
+                            <label for="decisao_administrativa">Decisão administrativa/judicial</label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Campos condicionais para imóvel incorreto -->
+                <div id="dadosImovel" class="conditional-field hidden">
+                    <h4 style="margin-bottom: 15px; color: #2c3e50;">Dados dos Imóveis</h4>
+                    <div class="form-row">
+                        <div class="form-col">
+                            <label for="inscricaoCorreto">Inscrição Imóvel Correto <span class="required">*</span></label>
+                            <input type="text" id="inscricaoCorreto" name="inscricaoCorreto" placeholder="Ex: 123456789">
+                        </div>
+                        <div class="form-col">
+                            <label for="inscricaoIncorreto">Inscrição Imóvel Incorreto <span class="required">*</span></label>
+                            <input type="text" id="inscricaoIncorreto" name="inscricaoIncorreto" placeholder="Ex: 987654321">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="descricaoMotivacao">Descrição Detalhada da Motivação <span class="required">*</span></label>
+                    <textarea id="descricaoMotivacao" name="descricaoMotivacao" rows="4" required 
+                              placeholder="Descreva detalhadamente os motivos que justificam o pedido de restituição. Inclua datas, valores, circunstâncias e qualquer informação relevante..."></textarea>
+                </div>
+            </div>
+
+            <!-- Seção 5: Dados Bancários -->
+            <div class="section">
+                <h2 class="section-title">🏦 5. Dados Bancários para Restituição</h2>
+                
+                <div class="form-group">
+                    <label>Titular da Conta <span class="required">*</span></label>
+                    <div class="radio-group">
+                        <div class="radio-item">
+                            <input type="radio" id="proprio_titular" name="titularConta" value="proprio" required>
+                            <label for="proprio_titular">O próprio contribuinte/requerente</label>
+                        </div>
+                        <div class="radio-item">
+                            <input type="radio" id="terceiro_titular" name="titularConta" value="terceiro" required>
+                            <label for="terceiro_titular">Terceiro</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-col">
+                        <label for="nomeTitular">Nome Completo do Titular <span class="required">*</span></label>
+                        <input type="text" id="nomeTitular" name="nomeTitular" placeholder="Nome completo conforme conta bancária" required>
+                    </div>
+                    <div class="form-col">
+                        <label for="cpfTitular">CPF/CNPJ do Titular <span class="required">*</span></label>
+                        <input type="text" id="cpfTitular" name="cpfTitular" placeholder="000.000.000-00" required>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-col">
+                        <label for="banco">Banco <span class="required">*</span></label>
+                        <input type="text" id="banco" name="banco" placeholder="Ex: Banco do Brasil, Caixa, Itaú..." required>
+                    </div>
+                    <div class="form-col-half">
+                        <label for="agencia">Agência <span class="required">*</span></label>
+                        <input type="text" id="agencia" name="agencia" placeholder="Ex: 1234" required>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-col">
+                        <label for="conta">Conta <span class="required">*</span></label>
+                        <input type="text" id="conta" name="conta" placeholder="Ex: 12345-6" required>
+                    </div>
+                    <div class="form-col">
+                        <label>Tipo de Conta <span class="required">*</span></label>
+                        <div class="radio-group">
+                            <div class="radio-item">
+                                <input type="radio" id="corrente" name="tipoConta" value="corrente" required>
+                                <label for="corrente">Conta Corrente</label>
+                            </div>
+                            <div class="radio-item">
+                                <input type="radio" id="poupanca" name="tipoConta" value="poupanca" required>
+                                <label for="poupanca">Conta Poupança</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Seção 6: Forma de Notificação -->
+            <div class="section">
+                <h2 class="section-title">📧 6. Forma de Notificação</h2>
+                
+                <div class="form-group">
+                    <label>Escolha a forma de notificação/intimação <span class="required">*</span></label>
+                    <div class="checkbox-group">
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="dtel" name="formaNotificacao" value="dtel">
+                            <label for="dtel">Domicílio Tributário Eletrônico (DT-e)</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="email_notif" name="formaNotificacao" value="email">
+                            <label for="email_notif">Correio eletrônico (e-mail)</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="whatsapp" name="formaNotificacao" value="whatsapp">
+                            <label for="whatsapp">Aplicativo de mensagens (WhatsApp)</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="correios" name="formaNotificacao" value="correios">
+                            <label for="correios">Envio por via postal com AR</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Seção 7: Termos e Declarações -->
+            <div class="section">
+                <h2 class="section-title">📜 7. Termos e Declarações</h2>
+                
+                <div class="checkbox-group">
+                    <div class="checkbox-item">
+                        <input type="checkbox" id="autorizacao" name="termos" value="autorizacao" required>
+                        <label for="autorizacao">
+                            <strong>AUTORIZAÇÃO PARA TRANSAÇÃO:</strong> AUTORIZO a Secretaria Municipal de Economia a realizar a transação de ofício dos créditos a serem restituídos com débitos vencidos ou vincendos de minha responsabilidade, até o limite em que se compensarem.
+                        </label>
+                    </div>
+                    
+                    <div class="checkbox-item">
+                        <input type="checkbox" id="responsabilidade" name="termos" value="responsabilidade" required>
+                        <label for="responsabilidade">
+                            <strong>TERMO DE RESPONSABILIDADE:</strong> Declaro estar ciente de que, em caso de ausência de qualquer documentação, esta deverá ser saneada no prazo de até 72 (setenta e duas) horas, contados a partir da protocolização, sob pena de arquivamento do pleito sem análise de mérito.
+                        </label>
+                    </div>
+                    
+                    <div class="checkbox-item">
+                        <input type="checkbox" id="veracidade" name="termos" value="veracidade" required>
+                        <label for="veracidade">
+                            <strong>DECLARAÇÃO DE VERACIDADE:</strong> Declaro, sob as penas da lei, que as informações e documentos apresentados são verdadeiros e autênticos.
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="button-group">
+                <button type="button" class="btn btn-secondary" onclick="visualizarRequerimento()">
+                    👁️ Visualizar Requerimento
+                </button>
+                <button type="button" class="btn btn-primary" onclick="gerarPDF()">
+                    📄 Gerar PDF
+                </button>
+            </div>
+        </form>
+
+        <!-- Preview do Requerimento -->
+        <div id="preview" class="preview hidden">
+            <div id="previewContent"></div>
+            
+            <div style="margin-top: 50px; display: flex; justify-content: space-between; align-items: flex-start;">
+                <!-- Assinatura Física -->
+                <div style="flex: 1; text-align: center; margin-right: 20px;">
+                    <div style="border-top: 1px solid #000; width: 250px; margin: 0 auto;"></div>
+                    <p style="margin-top: 10px; font-weight: bold;">Assinatura Física do Requerente</p>
+                    <p style="margin-top: 10px; font-size: 12px;">Data: <span id="dataAtual"></span></p>
+                </div>
+                
+                <!-- Assinatura Digital -->
+                <div style="flex: 1; text-align: center; margin-left: 20px; border: 2px dashed #3498db; padding: 20px; border-radius: 8px; background-color: #f8f9fa;">
+                    <p style="margin-bottom: 15px; font-weight: bold; color: #2c3e50;">Assinatura Digital</p>
+                    <p style="margin-bottom: 15px; font-size: 14px; color: #555;">Assine digitalmente este documento usando sua conta gov.br</p>
+                    <a href="https://www.gov.br/pt-br/servicos/assinatura-eletronica" target="_blank" 
+                       style="display: inline-block; background-color: #3498db; color: white; padding: 10px 20px; text-decoration: none; border-radius: 4px; font-weight: bold;">
+                        🔐 Assinar pelo gov.br
+                    </a>
+                    <p style="margin-top: 10px; font-size: 11px; color: #666;">Clique para acessar o portal de assinatura eletrônica</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Máscaras e validações
+        document.addEventListener('DOMContentLoaded', function() {
+            // Máscara para CPF/CNPJ
+            const cpfCnpjInput = document.getElementById('cpfCnpj');
+            const tipoContribuinte = document.getElementsByName('tipoContribuinte');
+            
+            tipoContribuinte.forEach(radio => {
+                radio.addEventListener('change', function() {
+                    const label = document.getElementById('labelCpfCnpj');
+                    if (this.value === 'fisica') {
+                        label.textContent = 'CPF';
+                        cpfCnpjInput.placeholder = '000.000.000-00';
+                    } else {
+                        label.textContent = 'CNPJ';
+                        cpfCnpjInput.placeholder = '00.000.000/0000-00';
+                    }
+                });
+            });
+
+            // Máscara para CEP
+            document.getElementById('cep').addEventListener('input', function(e) {
+                let value = e.target.value.replace(/\D/g, '');
+                if (value.length <= 8) {
+                    value = value.replace(/(\d{5})(\d)/, '$1-$2');
+                    e.target.value = value;
+                }
+            });
+
+            // Máscara para telefone
+            document.getElementById('telefone').addEventListener('input', function(e) {
+                let value = e.target.value.replace(/\D/g, '');
+                if (value.length <= 11) {
+                    value = value.replace(/(\d{2})(\d{5})(\d)/, '($1) $2-$3');
+                    e.target.value = value;
+                }
+            });
+
+            // Máscara para telefone do requerente
+            document.getElementById('telefoneRequerente').addEventListener('input', function(e) {
+                let value = e.target.value.replace(/\D/g, '');
+                if (value.length <= 11) {
+                    value = value.replace(/(\d{2})(\d{5})(\d)/, '($1) $2-$3');
+                    e.target.value = value;
+                }
+            });
+
+            // Máscara para CPF/CNPJ principal
+            cpfCnpjInput.addEventListener('input', function(e) {
+                let value = e.target.value.replace(/\D/g, '');
+                const tipoSelecionado = document.querySelector('input[name="tipoContribuinte"]:checked');
+                
+                if (tipoSelecionado && tipoSelecionado.value === 'fisica') {
+                    // Máscara CPF
+                    if (value.length <= 11) {
+                        value = value.replace(/(\d{3})(\d{3})(\d{3})(\d)/, '$1.$2.$3-$4');
+                        e.target.value = value;
+                    }
+                } else {
+                    // Máscara CNPJ
+                    if (value.length <= 14) {
+                        value = value.replace(/(\d{2})(\d{3})(\d{3})(\d{4})(\d)/, '$1.$2.$3/$4-$5');
+                        e.target.value = value;
+                    }
+                }
+            });
+
+            // Máscara para CPF/CNPJ do titular
+            document.getElementById('cpfTitular').addEventListener('input', function(e) {
+                let value = e.target.value.replace(/\D/g, '');
+                
+                // Detectar automaticamente se é CPF ou CNPJ pelo tamanho
+                if (value.length <= 11) {
+                    // Máscara CPF
+                    value = value.replace(/(\d{3})(\d{3})(\d{3})(\d)/, '$1.$2.$3-$4');
+                } else if (value.length <= 14) {
+                    // Máscara CNPJ
+                    value = value.replace(/(\d{2})(\d{3})(\d{3})(\d{4})(\d)/, '$1.$2.$3/$4-$5');
+                }
+                e.target.value = value;
+            });
+
+            // Máscara para CPF do requerente (sempre CPF)
+            document.getElementById('cpfRequerente').addEventListener('input', function(e) {
+                let value = e.target.value.replace(/\D/g, '');
+                if (value.length <= 11) {
+                    value = value.replace(/(\d{3})(\d{3})(\d{3})(\d)/, '$1.$2.$3-$4');
+                    e.target.value = value;
+                }
+            });
+
+            // Auto-preenchimento do titular da conta
+            document.getElementById('proprio_titular').addEventListener('change', function() {
+                if (this.checked) {
+                    const nome = document.getElementById('nomeRazaoSocial').value;
+                    const cpf = document.getElementById('cpfCnpj').value;
+                    
+                    document.getElementById('nomeTitular').value = nome;
+                    document.getElementById('cpfTitular').value = cpf;
+                }
+            });
+
+            // CORREÇÃO 1: Campos condicionais para qualificação do requerente
+            const qualificacaoInputs = document.getElementsByName('qualificacaoRequerente');
+            const dadosRequerente = document.getElementById('dadosRequerente');
+            
+            qualificacaoInputs.forEach(input => {
+                input.addEventListener('change', function() {
+                    if (this.value === 'proprio') {
+                        // Esconde os campos se for o próprio contribuinte
+                        dadosRequerente.classList.add('hidden');
+                        // Remove required dos campos condicionais
+                        document.getElementById('nomeRequerente').removeAttribute('required');
+                        document.getElementById('cpfRequerente').removeAttribute('required');
+                        document.getElementById('emailRequerente').removeAttribute('required');
+                        document.getElementById('telefoneRequerente').removeAttribute('required');
+                    } else {
+                        // Mostra os campos para outras opções
+                        dadosRequerente.classList.remove('hidden');
+                        // Adiciona required aos campos condicionais
+                        document.getElementById('nomeRequerente').setAttribute('required', 'required');
+                        document.getElementById('cpfRequerente').setAttribute('required', 'required');
+                        document.getElementById('emailRequerente').setAttribute('required', 'required');
+                        document.getElementById('telefoneRequerente').setAttribute('required', 'required');
+                    }
+                });
+            });
+
+            // CORREÇÃO 2: Campos condicionais para motivação (imóvel incorreto)
+            const motivacaoInputs = document.getElementsByName('motivacao');
+            const dadosImovel = document.getElementById('dadosImovel');
+            
+            motivacaoInputs.forEach(input => {
+                input.addEventListener('change', function() {
+                    if (this.value === 'imovel_incorreto') {
+                        // Mostra os campos de imóvel
+                        dadosImovel.classList.remove('hidden');
+                        // Torna os campos obrigatórios
+                        document.getElementById('inscricaoCorreto').setAttribute('required', 'required');
+                        document.getElementById('inscricaoIncorreto').setAttribute('required', 'required');
+                    } else {
+                        // Esconde os campos de imóvel
+                        dadosImovel.classList.add('hidden');
+                        // Remove o required dos campos
+                        document.getElementById('inscricaoCorreto').removeAttribute('required');
+                        document.getElementById('inscricaoIncorreto').removeAttribute('required');
+                    }
+                });
+            });
+        });
+
+        function visualizarRequerimento() {
+            const form = document.getElementById('formularioRestituicao');
+            const formData = new FormData(form);
+            
+            // Limpar destaques anteriores
+            document.querySelectorAll('.campo-erro').forEach(campo => {
+                campo.classList.remove('campo-erro');
+            });
+            
+            // Validação detalhada
+            const camposObrigatorios = [];
+            const camposComErro = [];
+            
+            // Verificar campos obrigatórios básicos
+            const camposBasicos = [
+                {id: 'nomeRazaoSocial', nome: 'Nome/Razão Social'},
+                {id: 'cpfCnpj', nome: 'CPF/CNPJ'},
+                {id: 'cep', nome: 'CEP'},
+                {id: 'logradouro', nome: 'Logradouro'},
+                {id: 'numero', nome: 'Número'},
+                {id: 'bairro', nome: 'Bairro'},
+                {id: 'cidade', nome: 'Cidade'},
+                {id: 'estado', nome: 'Estado'},
+                {id: 'email', nome: 'E-mail'},
+                {id: 'telefone', nome: 'Telefone/WhatsApp'},
+                {id: 'numeroDAM', nome: 'Número do DAM/Guia'},
+                {id: 'dataPagamento', nome: 'Data do Pagamento'},
+                {id: 'valorPago', nome: 'Valor Pago'},
+                {id: 'descricaoMotivacao', nome: 'Descrição da Motivação'},
+                {id: 'nomeTitular', nome: 'Nome do Titular da Conta'},
+                {id: 'cpfTitular', nome: 'CPF/CNPJ do Titular'},
+                {id: 'banco', nome: 'Banco'},
+                {id: 'agencia', nome: 'Agência'},
+                {id: 'conta', nome: 'Conta'}
+            ];
+            
+            camposBasicos.forEach(campo => {
+                const elemento = document.getElementById(campo.id);
+                if (elemento && elemento.hasAttribute('required') && !elemento.value.trim()) {
+                    camposObrigatorios.push(campo.nome);
+                    camposComErro.push(elemento);
+                }
+            });
+            
+            // Verificar seleções obrigatórias
+            if (!document.querySelector('input[name="tipoContribuinte"]:checked')) {
+                camposObrigatorios.push('Tipo de Pessoa');
+                document.querySelectorAll('input[name="tipoContribuinte"]').forEach(el => camposComErro.push(el.parentElement));
+            }
+            
+            if (!document.querySelector('input[name="qualificacaoRequerente"]:checked')) {
+                camposObrigatorios.push('Qualificação do Requerente');
+                document.querySelectorAll('input[name="qualificacaoRequerente"]').forEach(el => camposComErro.push(el.parentElement));
+            }
+            
+            if (!document.querySelector('input[name="tipoTributo"]:checked')) {
+                camposObrigatorios.push('Tributo Objeto da Restituição');
+                document.querySelectorAll('input[name="tipoTributo"]').forEach(el => camposComErro.push(el.parentElement));
+            }
+            
+            if (!document.querySelector('input[name="motivacao"]:checked')) {
+                camposObrigatorios.push('Motivação da Restituição');
+                document.querySelectorAll('input[name="motivacao"]').forEach(el => camposComErro.push(el.parentElement));
+            }
+            
+            if (!document.querySelector('input[name="titularConta"]:checked')) {
+                camposObrigatorios.push('Titular da Conta');
+                document.querySelectorAll('input[name="titularConta"]').forEach(el => camposComErro.push(el.parentElement));
+            }
+            
+            if (!document.querySelector('input[name="tipoConta"]:checked')) {
+                camposObrigatorios.push('Tipo de Conta');
+                document.querySelectorAll('input[name="tipoConta"]').forEach(el => camposComErro.push(el.parentElement));
+            }
+            
+            // Verificar campos condicionais
+            const qualificacao = document.querySelector('input[name="qualificacaoRequerente"]:checked');
+            if (qualificacao && qualificacao.value !== 'proprio') {
+                const camposRequerente = [
+                    {id: 'nomeRequerente', nome: 'Nome do Requerente'},
+                    {id: 'cpfRequerente', nome: 'CPF do Requerente'},
+                    {id: 'emailRequerente', nome: 'E-mail do Requerente'},
+                    {id: 'telefoneRequerente', nome: 'Telefone do Requerente'}
+                ];
+                
+                camposRequerente.forEach(campo => {
+                    const elemento = document.getElementById(campo.id);
+                    if (elemento && !elemento.value.trim()) {
+                        camposObrigatorios.push(campo.nome);
+                        camposComErro.push(elemento);
+                    }
+                });
+            }
+            
+            const motivacao = document.querySelector('input[name="motivacao"]:checked');
+            if (motivacao && motivacao.value === 'imovel_incorreto') {
+                const inscricaoCorreto = document.getElementById('inscricaoCorreto');
+                if (!inscricaoCorreto.value.trim()) {
+                    camposObrigatorios.push('Inscrição Imóvel Correto');
+                    camposComErro.push(inscricaoCorreto);
+                }
+                const inscricaoIncorreto = document.getElementById('inscricaoIncorreto');
+                if (!inscricaoIncorreto.value.trim()) {
+                    camposObrigatorios.push('Inscrição Imóvel Incorreto');
+                    camposComErro.push(inscricaoIncorreto);
+                }
+            }
+            
+            // Verificar formas de notificação
+            const formasNotificacao = document.querySelectorAll('input[name="formaNotificacao"]:checked');
+            if (formasNotificacao.length === 0) {
+                camposObrigatorios.push('Forma de Notificação');
+                document.querySelectorAll('input[name="formaNotificacao"]').forEach(el => camposComErro.push(el.parentElement));
+            }
+            
+            // Verificar termos
+            const termos = document.querySelectorAll('input[name="termos"]:checked');
+            if (termos.length < 3) {
+                camposObrigatorios.push('Todos os Termos e Declarações');
+                document.querySelectorAll('input[name="termos"]').forEach(el => camposComErro.push(el.parentElement));
+            }
+            
+            // Se houver campos faltando, destacar e mostrar mensagem
+            if (camposObrigatorios.length > 0) {
+                // Destacar campos com erro
+                camposComErro.forEach(campo => {
+                    campo.classList.add('campo-erro');
+                });
+                
+                // Mostrar mensagem detalhada
+                let mensagem = 'Os seguintes campos obrigatórios precisam ser preenchidos:\n\n';
+                camposObrigatorios.forEach((campo, index) => {
+                    mensagem += `${index + 1}. ${campo}\n`;
+                });
+                mensagem += '\nOs campos em destaque (borda vermelha) precisam ser corrigidos.';
+                
+                alert(mensagem);
+                
+                // Rolar para o primeiro campo com erro
+                if (camposComErro.length > 0) {
+                    camposComErro[0].scrollIntoView({ behavior: 'smooth', block: 'center' });
+                }
+                
+                return;
+            }
+
+            // Data atual
+            const hoje = new Date().toLocaleDateString('pt-BR');
+            document.getElementById('dataAtual').textContent = hoje;
+
+            // Gerar preview
+            let previewHTML = '';
+
+            // Seção 1: Identificação
+            previewHTML += '<div class="preview-section">';
+            previewHTML += '<h3>1. IDENTIFICAÇÃO DO CONTRIBUINTE</h3>';
+            previewHTML += `<div class="preview-item"><strong>Tipo:</strong> ${formData.get('tipoContribuinte') === 'fisica' ? 'Pessoa Física' : 'Pessoa Jurídica'}</div>`;
+            previewHTML += `<div class="preview-item"><strong>Nome/Razão Social:</strong> ${formData.get('nomeRazaoSocial')}</div>`;
+            previewHTML += `<div class="preview-item"><strong>CPF/CNPJ:</strong> ${formData.get('cpfCnpj')}</div>`;
+            previewHTML += `<div class="preview-item"><strong>Endereço:</strong> ${formData.get('logradouro')}, ${formData.get('numero')}`;
+            if (formData.get('complemento')) {
+                previewHTML += ` - ${formData.get('complemento')}`;
+            }
+            previewHTML += `</div>`;
+            previewHTML += `<div class="preview-item"><strong>Bairro:</strong> ${formData.get('bairro')}</div>`;
+            previewHTML += `<div class="preview-item"><strong>Cidade/Estado:</strong> ${formData.get('cidade')}/${formData.get('estado')}</div>`;
+            previewHTML += `<div class="preview-item"><strong>CEP:</strong> ${formData.get('cep')}</div>`;
+            previewHTML += `<div class="preview-item"><strong>E-mail:</strong> ${formData.get('email')}</div>`;
+            previewHTML += `<div class="preview-item"><strong>Telefone:</strong> ${formData.get('telefone')}</div>`;
+            previewHTML += '</div>';
+
+            // Seção 2: Qualificação
+            previewHTML += '<div class="preview-section">';
+            previewHTML += '<h3>2. QUALIFICAÇÃO DO REQUERENTE</h3>';
+            const qualificacoes = {
+                'proprio': 'O próprio contribuinte',
+                'procurador': 'Procurador legalmente habilitado',
+                'sucessorio': 'Detentor de direito sucessório',
+                'substituto': 'Substituto tributário',
+                'orgao': 'Órgão público'
+            };
+            previewHTML += `<div class="preview-item"><strong>Qualificação:</strong> ${qualificacoes[formData.get('qualificacaoRequerente')]}</div>`;
+            
+            // Dados do requerente se não for o próprio contribuinte
+            if (formData.get('qualificacaoRequerente') !== 'proprio') {
+                if (formData.get('nomeRequerente')) {
+                    previewHTML += `<div class="preview-item"><strong>Nome do Requerente:</strong> ${formData.get('nomeRequerente')}</div>`;
+                }
+                if (formData.get('cpfRequerente')) {
+                    previewHTML += `<div class="preview-item"><strong>CPF do Requerente:</strong> ${formData.get('cpfRequerente')}</div>`;
+                }
+                if (formData.get('emailRequerente')) {
+                    previewHTML += `<div class="preview-item"><strong>E-mail do Requerente:</strong> ${formData.get('emailRequerente')}</div>`;
+                }
+                if (formData.get('telefoneRequerente')) {
+                    previewHTML += `<div class="preview-item"><strong>Telefone do Requerente:</strong> ${formData.get('telefoneRequerente')}</div>`;
+                }
+            }
+            previewHTML += '</div>';
+
+            // Seção 3: Detalhes do Crédito
+            previewHTML += '<div class="preview-section">';
+            previewHTML += '<h3>3. DETALHES DO CRÉDITO A SER RESTITUÍDO</h3>';
+            const tributos = {
+                'iptu': 'IPTU - Imposto Predial e Territorial Urbano',
+                'itbi': 'ITBI - Imposto sobre Transmissão de Bens Imóveis',
+                'iss': 'ISS - Imposto Sobre Serviços',
+                'trsd': 'TRSD - Taxa de Coleta de Resíduo (Lixo)',
+                'taxas': 'Taxas Municipais',
+                'outras_rendas': 'Outras Rendas'
+            };
+            previewHTML += `<div class="preview-item"><strong>Tributo:</strong> ${tributos[formData.get('tipoTributo')]}</div>`;
+            previewHTML += `<div class="preview-item"><strong>Número do DAM/Guia:</strong> ${formData.get('numeroDAM')}</div>`;
+            previewHTML += `<div class="preview-item"><strong>Data do Pagamento:</strong> ${new Date(formData.get('dataPagamento')).toLocaleDateString('pt-BR')}</div>`;
+            previewHTML += `<div class="preview-item"><strong>Valor Pago:</strong> R$ ${parseFloat(formData.get('valorPago')).toLocaleString('pt-BR', {minimumFractionDigits: 2})}</div>`;
+            previewHTML += '</div>';
+
+            // Seção 4: Motivação
+            previewHTML += '<div class="preview-section">';
+            previewHTML += '<h3>4. MOTIVAÇÃO DA RESTITUIÇÃO</h3>';
+            const motivacoes = {
+                'duplicidade': 'Pagamento em duplicidade',
+                'erro_identificacao': 'Erro na identificação do sujeito passivo',
+                'erro_calculo': 'Erro na alíquota, base de cálculo ou apuração do valor',
+                'imovel_incorreto': 'Pagamento referente a imóvel incorreto (IPTU/TRSD)',
+                'decisao_administrativa': 'Decisão administrativa/judicial'
+            };
+            previewHTML += `<div class="preview-item"><strong>Motivo:</strong> ${motivacoes[formData.get('motivacao')]}</div>`;
+            
+            // Dados dos imóveis se for imóvel incorreto
+            if (formData.get('motivacao') === 'imovel_incorreto') {
+                if (formData.get('inscricaoCorreto')) {
+                    previewHTML += `<div class="preview-item"><strong>Inscrição Imóvel Correto:</strong> ${formData.get('inscricaoCorreto')}</div>`;
+                }
+                if (formData.get('inscricaoIncorreto')) {
+                    previewHTML += `<div class="preview-item"><strong>Inscrição Imóvel Incorreto:</strong> ${formData.get('inscricaoIncorreto')}</div>`;
+                }
+            }
+            
+            previewHTML += `<div class="preview-item"><strong>Descrição:</strong> ${formData.get('descricaoMotivacao')}</div>`;
+            previewHTML += '</div>';
+
+            // Seção 5: Dados Bancários
+            previewHTML += '<div class="preview-section">';
+            previewHTML += '<h3>5. DADOS BANCÁRIOS PARA RESTITUIÇÃO</h3>';
+            previewHTML += `<div class="preview-item"><strong>Titular:</strong> ${formData.get('titularConta') === 'proprio' ? 'O próprio contribuinte/requerente' : 'Terceiro'}</div>`;
+            previewHTML += `<div class="preview-item"><strong>Nome do Titular:</strong> ${formData.get('nomeTitular')}</div>`;
+            previewHTML += `<div class="preview-item"><strong>CPF/CNPJ do Titular:</strong> ${formData.get('cpfTitular')}</div>`;
+            previewHTML += `<div class="preview-item"><strong>Banco:</strong> ${formData.get('banco')}</div>`;
+            previewHTML += `<div class="preview-item"><strong>Agência:</strong> ${formData.get('agencia')}</div>`;
+            previewHTML += `<div class="preview-item"><strong>Conta:</strong> ${formData.get('conta')}</div>`;
+            previewHTML += `<div class="preview-item"><strong>Tipo de Conta:</strong> ${formData.get('tipoConta') === 'corrente' ? 'Conta Corrente' : 'Conta Poupança'}</div>`;
+            previewHTML += '</div>';
+
+            // Seção 6: Forma de Notificação
+            previewHTML += '<div class="preview-section">';
+            previewHTML += '<h3>6. FORMA DE NOTIFICAÇÃO</h3>';
+            const formasNotif = [];
+            document.querySelectorAll('input[name="formaNotificacao"]:checked').forEach(input => {
+                const formas = {
+                    'dtel': 'Domicílio Tributário Eletrônico (DT-e)',
+                    'email': 'Correio eletrônico (e-mail)',
+                    'whatsapp': 'Aplicativo de mensagens (WhatsApp)',
+                    'correios': 'Envio por via postal com AR'
+                };
+                formasNotif.push(formas[input.value]);
+            });
+            previewHTML += `<div class="preview-item"><strong>Formas selecionadas:</strong> ${formasNotif.join(', ')}</div>`;
+            previewHTML += '</div>';
+
+            // Seção 7: Termos e Declarações
+            previewHTML += '<div class="preview-section">';
+            previewHTML += '<h3>7. TERMOS E DECLARAÇÕES</h3>';
+            previewHTML += '<div class="preview-item">';
+            previewHTML += '<p style="margin-bottom: 15px;"><strong>AUTORIZAÇÃO PARA TRANSAÇÃO:</strong> AUTORIZO a Secretaria Municipal de Economia a realizar a transação de ofício dos créditos a serem restituídos com débitos vencidos ou vincendos de minha responsabilidade, até o limite em que se compensarem.</p>';
+            previewHTML += '<p style="margin-bottom: 15px;"><strong>TERMO DE RESPONSABILIDADE:</strong> Declaro estar ciente de que, em caso de ausência de qualquer documentação, esta deverá ser saneada no prazo de até 72 (setenta e duas) horas, contados a partir da protocolização, sob pena de arquivamento do pleito sem análise de mérito.</p>';
+            previewHTML += '<p style="margin-bottom: 15px;"><strong>DECLARAÇÃO DE VERACIDADE:</strong> Declaro, sob as penas da lei, que as informações e documentos apresentados são verdadeiros e autênticos.</p>';
+            previewHTML += '</div>';
+            previewHTML += '</div>';
+
+            document.getElementById('previewContent').innerHTML = previewHTML;
+            
+            // Mostrar preview e esconder formulário
+            document.getElementById('formularioRestituicao').style.display = 'none';
+            document.getElementById('preview').classList.remove('hidden');
+            
+            return true; // Indica que a visualização foi bem-sucedida
+        }
+
+        function voltarFormulario() {
+            document.getElementById('formularioRestituicao').style.display = 'block';
+            document.getElementById('preview').classList.add('hidden');
+        }
+
+        function gerarPDF() {
+            visualizarRequerimento();
+            setTimeout(() => {
+                imprimirPDF();
+            }, 500);
+        }
+
+        function imprimirPDF() {
+            window.print();
+        }
+    </script>
+</body>
+</html>
