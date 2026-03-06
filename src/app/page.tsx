@@ -1,7 +1,6 @@
 "use client";
 
 import Footer from "@/components/Footer/Footer";
-import FormDadosBancarios from "@/components/Formulario/formDadosBancarios";
 import FormDetalhe from "@/components/Formulario/formDetalhes";
 import FormHeader from "@/components/Formulario/formHeader";
 import FormIdentidade from "@/components/Formulario/formIdentidade";
@@ -11,6 +10,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { FormProvider, useForm } from "react-hook-form";
 
 import { schema, FormData } from "@/schema/formSchema";
+import FormMotivacao from "@/components/Formulario/formMotivacao";
 
 export default function Home() {
   const methods = useForm<FormData>({
@@ -35,7 +35,7 @@ export default function Home() {
               <FormIdentidade />
               <FormQualificacao />
               <FormDetalhe />
-              {/* <FormDadosBancarios /> */}
+              <FormMotivacao />
               {/* <IdentificacaoRequerente />
                 <IdentificacaoImovel />
                 <InformacoesAdicionais />
