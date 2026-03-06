@@ -29,11 +29,30 @@ function estado(value: string) {
   return estado;
 }
 
+function dinheiro(value: string) {
+  const numbers = value.replace(/\D/g, "");
+
+  if (!numbers) return "";
+
+  const valor = (Number(numbers) / 100).toFixed(2);
+
+  return valor.replace(".", ",").replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+}
+
+function dataBR(value: string) {
+  if (!value) return "";
+
+  const [ano, mes, dia] = value.split("-");
+  return `${dia}/${mes}/${ano}`;
+}
+
 const formater = {
   cpfCnpj,
   cep,
   telefone,
   estado,
+  dinheiro,
+  dataBR,
 };
 
 export default formater;

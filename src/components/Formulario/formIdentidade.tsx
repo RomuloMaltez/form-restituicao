@@ -1,5 +1,6 @@
 "use client";
 
+import formater from "@/utils/formater";
 import { useFormContext } from "react-hook-form";
 
 export default function FormIdentidade() {
@@ -12,31 +13,6 @@ export default function FormIdentidade() {
 
   const tipoPessoa = watch("tipo_pessoa");
   const isPessoaFisica = tipoPessoa !== "Pessoa Jurídica";
-
-  // Funções de formatação (mantidas do seu estilo)
-  const formatCpfCnpj = (v: string) => {
-    const n = v.replace(/\D/g, "");
-    if (n.length <= 11)
-      return n
-        .replace(/(\d{3})(\d)/, "$1.$2")
-        .replace(/(\d{3})(\d)/, "$1.$2")
-        .replace(/(\d{3})(\d{1,2})$/, "$1-$2");
-    return n
-      .replace(/^(\d{2})(\d)/, "$1.$2")
-      .replace(/^(\d{2})\.(\d{3})(\d)/, "$1.$2.$3")
-      .replace(/\.(\d{3})(\d)/, ".$1/$2")
-      .replace(/(\d{4})(\d)/, "$1-$2");
-  };
-
-  const formatTelefone = (v: string) => {
-    const n = v.replace(/\D/g, "");
-    return n.length <= 10
-      ? n.replace(/(\d{2})(\d{4})(\d{4})/, "($1) $2-$3")
-      : n.replace(/(\d{2})(\d{5})(\d{4})/, "($1) $2-$3");
-  };
-
-  const formatCep = (v: string) =>
-    v.replace(/\D/g, "").replace(/(\d{5})(\d{3})/, "$1-$2");
 
   return (
     <section className="form-section p-5 bg-[#FAFAFA] border border-gray-300 rounded">
@@ -98,7 +74,7 @@ export default function FormIdentidade() {
           <input
             {...register("cpfCnpj")}
             onChange={(e) =>
-              setValue("cpfCnpj", formatCpfCnpj(e.target.value), {
+              setValue("cpfCnpj", formater.cpfCnpj(e.target.value), {
                 shouldValidate: true,
               })
             }
@@ -122,7 +98,7 @@ export default function FormIdentidade() {
           <input
             {...register("cep")}
             onChange={(e) =>
-              setValue("cep", formatCep(e.target.value), {
+              setValue("cep", formater.cep(e.target.value), {
                 shouldValidate: true,
               })
             }
@@ -158,6 +134,7 @@ export default function FormIdentidade() {
             Nº <span className="text-red-500">*</span>
           </label>
           <input
+            type="number"
             {...register("numero")}
             className={`w-full border-2 rounded p-2 ${errors.numero ? "border-red-500" : "border-gray-400"}`}
           />
@@ -253,7 +230,7 @@ export default function FormIdentidade() {
             {...register("telefone")}
             className={`w-full border-2 rounded p-2 ${errors.telefone ? "border-red-500" : "border-gray-400"}`}
             onChange={(e) =>
-              setValue("telefone", formatTelefone(e.target.value), {
+              setValue("telefone", formater.telefone(e.target.value), {
                 shouldValidate: true,
               })
             }
