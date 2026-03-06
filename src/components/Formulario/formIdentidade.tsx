@@ -39,7 +39,7 @@ export default function FormIdentidade() {
     v.replace(/\D/g, "").replace(/(\d{5})(\d{3})/, "$1-$2");
 
   return (
-    <section className="form-section">
+    <section className="form-section p-5 bg-[#FAFAFA] border border-gray-300 rounded">
       {/* Título Padronizado */}
       <h3 className="text-[#2c3e50] font-semibold text-lg border-b-2 border-[#3498db] pb-2 mb-6">
         1. Identificação do Sujeito Passivo/Requerente

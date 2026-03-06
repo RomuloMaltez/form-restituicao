@@ -3,6 +3,7 @@
 import Footer from "@/components/Footer/Footer";
 import FormHeader from "@/components/Formulario/formHeader";
 import FormIdentidade from "@/components/Formulario/formIdentidade";
+import FormQualificacao from "@/components/Formulario/formQualificacao";
 import Header from "@/components/Header/Header";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { FormProvider, useForm } from "react-hook-form";
@@ -73,6 +74,7 @@ export default function Home() {
           <FormProvider {...methods}>
             <form onSubmit={methods.handleSubmit(onSubmit)}>
               <FormIdentidade />
+              <FormQualificacao />
               {/* <IdentificacaoRequerente />
                 <IdentificacaoImovel />
                 <InformacoesAdicionais />
