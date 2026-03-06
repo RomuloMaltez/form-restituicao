@@ -1,7 +1,7 @@
 import { z } from "zod";
 
 export const detalheSchema = z.object({
-  motivo_pricipal: z
+  tributo_objeto_da_restituição: z
     .string()
     .refine(
       (value) =>

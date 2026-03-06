@@ -19,7 +19,7 @@ export default function FormDetalhe() {
       <div className="grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-4">
         <div className="col-span-full bg-gray-50 p-3 rounded border border-gray-200 mb-2">
           <p className="font-semibold text-sm mb-2">
-            Selecione o motivo principal :{" "}
+            Tributo Objeto da Restituição :{" "}
             <span className="text-red-500">*</span>
           </p>
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
@@ -27,7 +27,7 @@ export default function FormDetalhe() {
               <input
                 type="radio"
                 value="IPTU - Imposto Predial e Territorial Urbano"
-                {...register("motivo_pricipal")}
+                {...register("tributo_objeto_da_restituição")}
                 defaultChecked
               />{" "}
               IPTU - Imposto Predial e Territorial Urbano
@@ -37,7 +37,7 @@ export default function FormDetalhe() {
               <input
                 type="radio"
                 value="ITBI - Imposto sobre Transmissão de Bens Imóveis"
-                {...register("motivo_pricipal")}
+                {...register("tributo_objeto_da_restituição")}
               />{" "}
               ITBI - Imposto sobre Transmissão de Bens Imóveis
             </label>
@@ -46,7 +46,7 @@ export default function FormDetalhe() {
               <input
                 type="radio"
                 value="TRSD - Taxa de Coleta de Resíduo (Lixo)"
-                {...register("motivo_pricipal")}
+                {...register("tributo_objeto_da_restituição")}
               />{" "}
               TRSD - Taxa de Coleta de Resíduo (Lixo)
             </label>
@@ -55,7 +55,7 @@ export default function FormDetalhe() {
               <input
                 type="radio"
                 value="ISS - Imposto Sobre Serviços"
-                {...register("motivo_pricipal")}
+                {...register("tributo_objeto_da_restituição")}
               />{" "}
               ISS - Imposto Sobre Serviços
             </label>
@@ -64,7 +64,7 @@ export default function FormDetalhe() {
               <input
                 type="radio"
                 value="Taxas Municipais"
-                {...register("motivo_pricipal")}
+                {...register("tributo_objeto_da_restituição")}
               />{" "}
               Taxas Municipais
             </label>
@@ -73,7 +73,7 @@ export default function FormDetalhe() {
               <input
                 type="radio"
                 value="Outras Rendas"
-                {...register("motivo_pricipal")}
+                {...register("tributo_objeto_da_restituição")}
               />{" "}
               Outras Rendas
             </label>
