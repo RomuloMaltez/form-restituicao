@@ -11,6 +11,7 @@ import { FormProvider, useForm } from "react-hook-form";
 
 import { schema, FormData } from "@/schema/formSchema";
 import FormMotivacao from "@/components/Formulario/formMotivacao";
+import FormDadosBancarios from "@/components/Formulario/formDadosBancarios";
 
 export default function Home() {
   const methods = useForm<FormData>({
@@ -36,6 +37,7 @@ export default function Home() {
               <FormQualificacao />
               <FormDetalhe />
               <FormMotivacao />
+              <FormDadosBancarios />
               {/* <IdentificacaoRequerente />
                 <IdentificacaoImovel />
                 <InformacoesAdicionais />

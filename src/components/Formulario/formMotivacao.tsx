@@ -25,7 +25,7 @@ export default function FormMotivacao() {
               <input
                 type="radio"
                 value="Pagamento em duplicidade"
-                {...register("motivo_pricipal")}
+                {...register("motivo_principal")}
                 defaultChecked
               />{" "}
               Pagamento em duplicidade
@@ -35,7 +35,7 @@ export default function FormMotivacao() {
               <input
                 type="radio"
                 value="Erro na identificação do sujeito passivo"
-                {...register("motivo_pricipal")}
+                {...register("motivo_principal")}
               />{" "}
               Erro na identificação do sujeito passivo
             </label>
@@ -44,7 +44,7 @@ export default function FormMotivacao() {
               <input
                 type="radio"
                 value="Erro na alíquota, base de cálculo ou apuração do valor"
-                {...register("motivo_pricipal")}
+                {...register("motivo_principal")}
               />{" "}
               Erro na alíquota, base de cálculo ou apuração do valor
             </label>
@@ -53,7 +53,7 @@ export default function FormMotivacao() {
               <input
                 type="radio"
                 value="Pagamento referente a imóvel incorreto (IPTU/TRSD)"
-                {...register("motivo_pricipal")}
+                {...register("motivo_principal")}
               />{" "}
               Pagamento referente a imóvel incorreto (IPTU/TRSD)
             </label>
@@ -62,7 +62,7 @@ export default function FormMotivacao() {
               <input
                 type="radio"
                 value="Decisão administrativa/judicial"
-                {...register("motivo_pricipal")}
+                {...register("motivo_principal")}
               />{" "}
               Decisão administrativa/judicial
             </label>

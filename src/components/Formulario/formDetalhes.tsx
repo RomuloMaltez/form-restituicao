@@ -109,7 +109,7 @@ export default function FormDetalhe() {
             {...register("data_pagamento", {
               setValueAs: (value) => formater.dataBR(value),
             })}
-            className="w-full border-2 border-gray-400 rounded p-2"
+            className={`w-full border-2 border-gray-400 rounded p-2 ${errors.data_pagamento ? "border-red-500" : "border-gray-400"}`}
           />
 
           {errors.data_pagamento && (
@@ -133,7 +133,7 @@ export default function FormDetalhe() {
             type="text"
             inputMode="numeric"
             placeholder="1500.00"
-            className="w-full border-2 border-gray-400 rounded p-2"
+            className={`w-full border-2 border-gray-400 rounded p-2 ${errors.valor_pago ? "border-red-500" : "border-gray-400"}`}
           />
           {errors.valor_pago && (
             <p className="text-red-500 text-sm">

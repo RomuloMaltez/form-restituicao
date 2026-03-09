@@ -193,6 +193,11 @@ export default function FormIdentidade() {
           </label>
           <input
             {...register("estado")}
+            onChange={(element) => {
+              setValue("estado", formater.estado(element.target.value), {
+                shouldValidate: true,
+              });
+            }}
             maxLength={2}
             className={`w-full border-2 rounded p-2 uppercase ${errors.estado ? "border-red-500" : "border-gray-400"}`}
             placeholder="RO"
