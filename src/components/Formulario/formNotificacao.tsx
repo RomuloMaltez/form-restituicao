@@ -3,7 +3,10 @@
 import { useFormContext } from "react-hook-form";
 
 export default function FormNotificacao() {
-  const { register } = useFormContext();
+  const {
+    register,
+    formState: { errors },
+  } = useFormContext();
 
   return (
     <section className="form-section p-5 bg-[#FAFAFA] border border-gray-300 rounded">
@@ -12,7 +15,9 @@ export default function FormNotificacao() {
       </h3>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-4">
-        <div className="col-span-full bg-gray-50 p-3 rounded border border-gray-200 mb-2">
+        <div
+          className={`col-span-full bg-gray-50 p-3 rounded border border-gray-200 mb-2 ${errors.tipo_de_notificacao ? "border-red-500" : "border-gray-300r"}`}
+        >
           <p className="font-semibold text-sm mb-2">
             Tipo de Pessoa <span className="text-red-500">*</span>
           </p>
@@ -22,7 +27,6 @@ export default function FormNotificacao() {
                 type="checkbox"
                 value="Domicílio Tributário Eletrônico (DT-e)"
                 {...register("tipo_de_notificacao")}
-                defaultChecked
               />{" "}
               Domicílio Tributário Eletrônico (DT-e)
             </label>
@@ -54,6 +58,12 @@ export default function FormNotificacao() {
               Envio por via postal com AR
             </label>
           </div>
+
+          {errors.tipo_de_notificacao && (
+            <p className="text-red-500 text-sm mt-5">
+              {errors.tipo_de_notificacao.message as string}
+            </p>
+          )}
         </div>
       </div>
     </section>

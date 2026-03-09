@@ -39,7 +39,7 @@ export default function FormTermosDeDeclaracao() {
         {termos.map((termo) => (
           <div
             key={termo.id}
-            className="bg-white p-4 rounded border border-gray-200 shadow-sm"
+            className={`bg-white p-4 rounded border border-gray-200 shadow-sm ${errors[termo.id] ? "border-red-500" : "border-gray-300r"}`}
           >
             <label
               htmlFor={termo.id}
