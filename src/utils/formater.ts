@@ -1,6 +1,6 @@
 function cpfCnpj(value: string) {
   const number = value.replace(/\D/g, "");
-  if (number.length < 11) {
+  if (number.length <= 11) {
     return number
       .replace(/(\d{3})(\d)/, "$1.$2")
       .replace(/(\d{3})(\d)/, "$1.$2")
@@ -11,17 +11,21 @@ function cpfCnpj(value: string) {
     .replace(/^(\d{2})(\d)/, "$1.$2")
     .replace(/^(\d{2})\.(\d{3})(\d)/, "$1.$2.$3")
     .replace(/\.(\d{3})(\d)/, ".$1/$2")
-    .replace(/(\d{4})(\d)/, "$1-$2");
+    .replace(/(\d{4})(\d)/, "$1-$2")
+    .slice(0, 18);
 }
 
 function cep(value: string) {
   const number = value.replace(/\D/g, "");
-  return number.replace(/(\d{5})(\d{3})/, "$1-$2");
+  return number.replace(/(\d{5})(\d{3})/, "$1-$2").slice(0, 9);
 }
 
 function telefone(value: string) {
   const numbers = value.replace(/\D/g, "");
-  return numbers.replace(/(\d{2})(\d{5})(\d{4})/, "($1) $2-$3");
+  if (numbers.length === 10) {
+    return numbers.replace(/(\d{2})(\d{4})(\d{4})/, "($1) $2-$3");
+  }
+  return numbers.replace(/(\d{2})(\d{5})(\d{4})/, "($1) $2-$3").slice(0, 15);
 }
 
 function estado(value: string) {
@@ -46,6 +50,19 @@ function dataBR(value: string) {
   return `${dia}/${mes}/${ano}`;
 }
 
+function agencia(value: string) {
+  if (!value) return "";
+  const numbers = value.replace(/\D/g, "");
+
+  const limited = numbers.slice(0, 5);
+
+  if (limited.length <= 4) {
+    return limited;
+  }
+
+  return `${limited.slice(0, 4)}-${limited.slice(4)}`;
+}
+
 const formater = {
   cpfCnpj,
   cep,
@@ -53,6 +70,7 @@ const formater = {
   estado,
   dinheiro,
   dataBR,
+  agencia,
 };
 
 export default formater;
