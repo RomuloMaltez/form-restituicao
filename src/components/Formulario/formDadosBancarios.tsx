@@ -14,32 +14,37 @@ export default function FormDadosBancarios() {
         5. Dados Bancários para Restituição
       </h3>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-4">
-        <div className="col-span-full bg-gray-50 p-3 rounded border border-gray-200 mb-2">
-          <p className="font-semibold text-sm mb-2">
-            Titular da Conta : <span className="text-red-500">*</span>
-          </p>
+      <div className="col-span-full bg-gray-50 p-4 rounded border border-gray-200 mb-2">
+        <p className="font-semibold text-sm mb-4 text-gray-700">
+          Titular da Conta : <span className="text-red-500">*</span>
+        </p>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 mb-5">
-            <label className="flex items-center gap-2 text-sm cursor-pointer">
-              <input
-                type="radio"
-                value="O próprio contribuinte/requerente"
-                {...register("titular_da_conta")}
-                defaultChecked
-              />{" "}
+        {/* Usamos flex para que os itens fiquem próximos, mudando para grid em telas pequenas */}
+        <div className="flex flex-wrap gap-6">
+          <label className="flex items-center gap-2 text-sm cursor-pointer group">
+            <input
+              type="radio"
+              value="O próprio contribuinte/requerente"
+              {...register("titular_da_conta")}
+              className="h-4 w-4 border-gray-300 text-[#3498db] focus:ring-[#3498db]"
+              defaultChecked
+            />
+            <span className="group-hover:text-blue-600 transition-colors">
               O próprio contribuinte/requerente
-            </label>
+            </span>
+          </label>
 
-            <label className="flex items-center gap-2 text-sm cursor-pointer">
-              <input
-                type="radio"
-                value="Terceiro"
-                {...register("titular_da_conta")}
-              />{" "}
+          <label className="flex items-center gap-2 text-sm cursor-pointer group">
+            <input
+              type="radio"
+              value="Terceiro"
+              {...register("titular_da_conta")}
+              className="h-4 w-4 border-gray-300 text-[#3498db] focus:ring-[#3498db]"
+            />
+            <span className="group-hover:text-blue-600 transition-colors">
               Terceiro
-            </label>
-          </div>
+            </span>
+          </label>
         </div>
       </div>
 
