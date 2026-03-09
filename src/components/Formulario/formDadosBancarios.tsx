@@ -40,11 +40,6 @@ export default function FormDadosBancarios() {
               Terceiro
             </label>
           </div>
-
-          <label className="block font-semibold mb-1">
-            Descrição Detalhada da Motivação{" "}
-            <span className="text-red-500">*</span>
-          </label>
         </div>
       </div>
 
@@ -126,7 +121,7 @@ export default function FormDadosBancarios() {
           )}
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-4">
+        <div className="col-span-full grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-4">
           <div className="col-span-full bg-gray-50 p-3 rounded border border-gray-200 mb-2">
             <p className="font-semibold text-sm mb-2">
               Tipo da Conta : <span className="text-red-500">*</span>
