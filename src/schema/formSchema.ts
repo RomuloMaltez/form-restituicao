@@ -7,14 +7,12 @@ import { dados } from "./dadosSchema";
 import { notificacaoSchema } from "./notificacaoSchema";
 import { termos_declaracao } from "./termosDeclaracao";
 
-export const schema = z.object({
-  ...identidadeSchema.shape,
-  ...qualificacaoSchema.shape,
-  ...detalheSchema.shape,
-  ...motivacaoSchema.shape,
-  ...dados.shape,
-  ...notificacaoSchema.shape,
-  ...termos_declaracao.shape,
-});
+export const schema = identidadeSchema
+  .and(qualificacaoSchema)
+  .and(detalheSchema)
+  .and(motivacaoSchema)
+  .and(dados)
+  .and(notificacaoSchema)
+  .and(termos_declaracao);
 
 export type FormData = z.infer<typeof schema>;
