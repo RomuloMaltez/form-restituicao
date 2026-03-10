@@ -12,15 +12,42 @@ import { FormProvider, useForm } from "react-hook-form";
 import { schema, FormData } from "@/schema/formSchema";
 import FormMotivacao from "@/components/Formulario/formMotivacao";
 import FormDadosBancarios from "@/components/Formulario/formDadosBancarios";
+import FormNotificacao from "@/components/Formulario/formNotificacao";
+import FormTermosDeDeclaracao from "@/components/Formulario/formTermosDeDeclaracao";
+import { PdfStyle } from "@/components/Formulario/pdfStyle";
+import { pdf } from "@react-pdf/renderer";
 
 export default function Home() {
   const methods = useForm<FormData>({
     resolver: zodResolver(schema),
     mode: "onSubmit",
+    defaultValues: {
+      tipo_de_notificacao: [],
+    },
   });
 
   async function onSubmit(data: FormData) {
-    console.log(data);
+    try {
+      const doc = <PdfStyle data={data} />;
+      const blob = await pdf(doc).toBlob();
+
+      const url = URL.createObjectURL(blob);
+      const link = document.createElement("a");
+      link.href = url;
+      const fileName = `Requerimento_${data.nome.replace(/\s+/g, "_")}.pdf`;
+      link.download = fileName;
+
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+
+      URL.revokeObjectURL(url);
+
+      alert("Requerimento gerado com sucesso!");
+    } catch (error) {
+      console.error("Erro ao gerar o PDF:", error);
+      alert("Ocorreu um erro ao gerar o documento. Verifique o console.");
+    }
   }
 
   return (
@@ -38,10 +65,8 @@ export default function Home() {
               <FormDetalhe />
               <FormMotivacao />
               <FormDadosBancarios />
-              {/* <IdentificacaoRequerente />
-                <IdentificacaoImovel />
-                <InformacoesAdicionais />
-                <DataAssinatura /> */}
+              <FormNotificacao />
+              <FormTermosDeDeclaracao />
 
               <div className="mt-8 text-center">
                 <button
