@@ -131,12 +131,7 @@ export const PdfStyle = ({ data }: { data: FormData }) => {
             PREFEITURA MUNICIPAL DE PORTO VELHO
           </Text>
           <Text style={styles.headerSubtitle}>
-            SECRETARIA MUNICIPAL DE FAZENDA
-          </Text>
-          <Text
-            style={{ fontSize: 7.5, color: COLORS.textMedium, marginTop: 2 }}
-          >
-            Subsecretaria da Receita Municipal
+            SECRETARIA MUNICIPAL DE ECONOMIA
           </Text>
         </View>
 
