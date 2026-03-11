@@ -13,6 +13,7 @@ export default function FormIdentidade() {
 
   const tipoPessoa = watch("tipo_pessoa");
   const isPessoaFisica = tipoPessoa !== "Pessoa Jurídica";
+  const documento = tipoPessoa === "Pessoa Física" ? "cpf" : "cnpj";
 
   return (
     <section className="form-section p-5 bg-[#FAFAFA] border border-gray-300 rounded">
@@ -74,9 +75,13 @@ export default function FormIdentidade() {
           <input
             {...register("cpfCnpj")}
             onChange={(e) =>
-              setValue("cpfCnpj", formater.cpfCnpj(e.target.value), {
-                shouldValidate: true,
-              })
+              setValue(
+                "cpfCnpj",
+                formater.cpfOrCnpj(e.target.value, documento),
+                {
+                  shouldValidate: true,
+                },
+              )
             }
             className={`w-full border-2 rounded p-2 ${errors.cpfCnpj ? "border-red-500" : "border-gray-400"}`}
             placeholder={
