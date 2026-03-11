@@ -15,6 +15,33 @@ function cpfCnpj(value: string) {
     .slice(0, 18);
 }
 
+function cpfOrCnpj(value: string, type: string) {
+  let number;
+
+  if (type === "cpf") {
+    number = value.replace(/\D/g, "").slice(0, 11);
+
+    console.log(number, number.length);
+    return number
+      .replace(/(\d{3})(\d)/, "$1.$2")
+      .replace(/(\d{3})(\d)/, "$1.$2")
+      .replace(/(\d{3})(\d{1,2})$/, "$1-$2")
+      .slice(0, 14);
+  }
+  if (type === "cnpj") {
+    number = value.replace(/\D/g, "").slice(0, 14);
+
+    return number
+      .replace(/^(\d{2})(\d)/, "$1.$2")
+      .replace(/^(\d{2})\.(\d{3})(\d)/, "$1.$2.$3")
+      .replace(/\.(\d{3})(\d)/, ".$1/$2")
+      .replace(/(\d{4})(\d)/, "$1-$2")
+      .slice(0, 18);
+  }
+
+  return number;
+}
+
 function cep(value: string) {
   const number = value.replace(/\D/g, "");
   return number.replace(/(\d{5})(\d{3})/, "$1-$2").slice(0, 9);
@@ -72,6 +99,7 @@ function agencia(value: string) {
 
 const formater = {
   cpfCnpj,
+  cpfOrCnpj,
   cep,
   telefone,
   estado,

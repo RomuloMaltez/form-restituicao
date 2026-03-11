@@ -51,7 +51,7 @@ export default function Home() {
   }
 
   return (
-    <div className="min-h-screen bg-pv-gray-100 font-poppins">
+    <div data-search-root className="min-h-screen bg-pv-gray-100 font-poppins">
       <Header />
 
       <main className="container mx-auto px-4 py-8 max-w-4xl">
