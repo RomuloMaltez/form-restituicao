@@ -105,10 +105,17 @@ export default function FormDetalhe() {
           </label>
 
           <input
-            type="date"
+            type="text"
+            inputMode="numeric"
+            placeholder="dd/mm/aaaa"
             {...register("data_pagamento", {
-              setValueAs: (value) => formater.dataBR(value),
+              setValueAs: (value) => (value ? formater.mascaraData(value) : ""),
             })}
+            onInput={(e) => {
+              const valor = formater.mascaraData(e.currentTarget.value);
+              e.currentTarget.value = valor;
+              setValue("data_pagamento", valor, { shouldValidate: true });
+            }}
             className={`w-full border-2 border-gray-400 rounded p-2 ${errors.data_pagamento ? "border-red-500" : "border-gray-400"}`}
           />
 

@@ -50,6 +50,13 @@ function dataBR(value: string) {
   return `${dia}/${mes}/${ano}`;
 }
 
+function mascaraData(value: string) {
+  const numbers = value.replace(/\D/g, "").slice(0, 8);
+  if (numbers.length <= 2) return numbers;
+  if (numbers.length <= 4) return `${numbers.slice(0, 2)}/${numbers.slice(2)}`;
+  return `${numbers.slice(0, 2)}/${numbers.slice(2, 4)}/${numbers.slice(4)}`;
+}
+
 function agencia(value: string) {
   if (!value) return "";
   const numbers = value.replace(/\D/g, "");
@@ -70,6 +77,7 @@ const formater = {
   estado,
   dinheiro,
   dataBR,
+  mascaraData,
   agencia,
 };
 
