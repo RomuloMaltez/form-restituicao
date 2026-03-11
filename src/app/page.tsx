@@ -1,0 +1,87 @@
+"use client";
+
+import Footer from "@/components/Footer/Footer";
+import FormDetalhe from "@/components/Formulario/formDetalhes";
+import FormHeader from "@/components/Formulario/formHeader";
+import FormIdentidade from "@/components/Formulario/formIdentidade";
+import FormQualificacao from "@/components/Formulario/formQualificacao";
+import Header from "@/components/Header/Header";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { FormProvider, useForm } from "react-hook-form";
+
+import { schema, FormData } from "@/schema/formSchema";
+import FormMotivacao from "@/components/Formulario/formMotivacao";
+import FormDadosBancarios from "@/components/Formulario/formDadosBancarios";
+import FormNotificacao from "@/components/Formulario/formNotificacao";
+import FormTermosDeDeclaracao from "@/components/Formulario/formTermosDeDeclaracao";
+import { PdfStyle } from "@/components/Formulario/pdfStyle";
+import { pdf } from "@react-pdf/renderer";
+
+export default function Home() {
+  const methods = useForm<FormData>({
+    resolver: zodResolver(schema),
+    mode: "onSubmit",
+    defaultValues: {
+      tipo_de_notificacao: [],
+    },
+  });
+
+  async function onSubmit(data: FormData) {
+    try {
+      const doc = <PdfStyle data={data} />;
+      const blob = await pdf(doc).toBlob();
+
+      const url = URL.createObjectURL(blob);
+      const link = document.createElement("a");
+      link.href = url;
+      const fileName = `Requerimento_${data.nome.replace(/\s+/g, "_")}.pdf`;
+      link.download = fileName;
+
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+
+      URL.revokeObjectURL(url);
+
+      alert("Requerimento gerado com sucesso!");
+    } catch (error) {
+      console.error("Erro ao gerar o PDF:", error);
+      alert("Ocorreu um erro ao gerar o documento. Verifique o console.");
+    }
+  }
+
+  return (
+    <div data-search-root className="min-h-screen bg-pv-gray-100 font-poppins">
+      <Header />
+
+      <main className="container mx-auto px-4 py-8 max-w-4xl">
+        <div className="bg-white rounded-lg shadow-lg p-6 md:p-10 border border-gray-200">
+          <FormHeader />
+
+          <FormProvider {...methods}>
+            <form onSubmit={methods.handleSubmit(onSubmit)}>
+              <FormIdentidade />
+              <FormQualificacao />
+              <FormDetalhe />
+              <FormMotivacao />
+              <FormDadosBancarios />
+              <FormNotificacao />
+              <FormTermosDeDeclaracao />
+
+              <div className="mt-8 text-center">
+                <button
+                  type="submit"
+                  className="bg-[#70B643] text-white px-6 py-3 rounded-md hover:bg-[#2980b9] transition"
+                >
+                  Gerar PDF
+                </button>
+              </div>
+            </form>
+          </FormProvider>
+        </div>
+      </main>
+
+      <Footer />
+    </div>
+  );
+}
